@@ -1,0 +1,45 @@
+import pytest
+from src.main import Product, Category
+
+@pytest.fixture
+def first_category1():
+    return Category(
+        name="Смартфоны",
+        description="Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для "
+                    "удобства жизни",
+        products=[Product(name="Iphone 15", description="512GB, Gray space", price=210000.0, quantity=8),
+                  Product(name="Samsung Galaxy S23 Ultra", description = "256GB, Серый цвет, 200MP камера",
+                          price = 80000.0, quantity = 5)]
+    )
+
+@pytest.fixture
+def second_category2():
+    return Category(
+        name="Смартфоны",
+        description="Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для "
+                    "удобства жизни",
+        products=[Product(name="Iphone 15", description="512GB, Gray space", price=210000.0, quantity=8),
+                  Product(name="Samsung Galaxy S23 Ultra", description="256GB, Серый цвет, 200MP камера",
+                          price=31000.0, quantity=5),
+                  Product(name="Xiaomi Redmi Note 11", description="1024GB, Синий",
+                          price=80000.0, quantity=14)
+                  ]
+    )
+
+@pytest.fixture
+def category_not_products():
+    return Category(
+        name="Смартфоны",
+        description="Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для "
+                    "удобства жизни",
+        products=[]
+    )
+
+@pytest.fixture
+def product():
+    return Product(
+        name="Samsung Galaxy S23 Ultra",
+        description="256GB, Серый цвет, 200MP камера",
+        price=80000.0,
+        quantity=5)
+
