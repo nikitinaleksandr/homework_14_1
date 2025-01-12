@@ -8,7 +8,6 @@ cover_main = current_dir/'src'/'main.py'
 
 
 from src.main import Product, Category
-# from tests.conftest import product, first_category1, second_category2, category_not_products
 
 
 def test_product_init(product):
@@ -81,7 +80,6 @@ def test_type_data_product(second_category2):
     assert isinstance(second_category2.name, str)
     assert isinstance(second_category2.description, str)
     assert isinstance(second_category2.products, list)
-
 
 def test_product_negativ_price(): #  "Цена должна быть больше нуля"
     with pytest.raises(ValueError, match="Цена должна быть больше нуля"):

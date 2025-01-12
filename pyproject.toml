@@ -16,6 +16,8 @@ isort = "^5.13.2"
 black = "^24.10.0"
 flake8 = "^7.1.1"
 
+[flake8]
+max-line-length = 119
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"
@@ -27,3 +29,5 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.black]
 line-length = 119
+
+
