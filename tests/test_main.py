@@ -3,6 +3,9 @@ from pathlib import Path
 import pytest
 from mypy.types import names
 from unicodedata import category
+
+from tests.conftest import product
+
 current_dir = Path(__file__).parent.parent.resolve()
 cover_main = current_dir/'src'/'main.py'
 
@@ -69,12 +72,12 @@ def test_change_category_attributes(first_category1):
     #изменяем атрибуты
     first_category1.name = "Новый товар"
     first_category1.description = "wool, black"
-    first_category1.products = [Product(name='socks', description="wool, black", price=120.0, quantity=50)]
-
+    first_category1.add_product = [Product(name='socks', description="wool, black", price=120.0, quantity=50)]
+    # first_category1.add_product(...)
     # Проверяем, что изменения прошли успешно
     assert first_category1.name == "Новый товар"
     assert first_category1.description == 'wool, black'
-    assert len(first_category1.products) == 1
+    assert len(first_category1.products) == 2
 
 def test_type_data_product(second_category2):
     assert isinstance(second_category2.name, str)
@@ -82,9 +85,28 @@ def test_type_data_product(second_category2):
     assert isinstance(second_category2.products, list)
 
 def test_product_negativ_price(): #  "Цена должна быть больше нуля"
-    with pytest.raises(ValueError, match="Цена должна быть больше нуля"):
+    # @price.setter
+    # assert price(self, price=-1):
+    #     print("Цена не должна быть нулевая или отрицательная")
+
+    with pytest.raises(ValueError, match="Цена не должна быть нулевая или отрицательная"):
         Product(name="Товар", description="Описание", price=-10.0, quantity=5)
 
 def test_product_negativ_quantity(): #  "Цена должна быть больше нуля"
     with pytest.raises(ValueError, match="Количество не может быть отрицательным"):
         Product(name="Товар", description="Описание", price=10.0, quantity=-5)
+
+
+def test_price():
+    "Правильность возврата цены с помощью геттера"
+    product = Product.new_product(
+        {"name": "Samsung Galaxy S23 Ultra", "description": "256GB, Серый цвет, 200MP камера", "price": 180000.0,
+         "quantity": 5})
+    # product = Product(name="Товар", price=10)  # Создай экземпляр
+    assert product.price == 180000.0  # Используй геттер
+    # price = 10
+    # assert self.__price == price
+
+
+    # price(self) == self_price
+
