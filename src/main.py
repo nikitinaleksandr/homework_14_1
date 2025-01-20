@@ -23,7 +23,7 @@ class Product:  # Класс для создания продуктов с об�
 
     @price.setter
     def price(self, price):
-        if float(price) < 0:
+        if float(price) <= 0:
             print("Цена не должна быть нулевая или отрицательная")
         else:
             self.__price = price
@@ -50,14 +50,23 @@ class Category:  # Класс для создания категорий с об
         self.__products = products
         Category.category_count += 1
         Category.product_count += len(products) if products else 0
+        # self.__products = []
+        self._product_count = 0
 
-    # Метод в который нужно передавать объект класса Product
+
+        # Метод в который нужно передавать объект класса Product
     def add_product(self, product):
         self.__products.append(product)
+        self._product_count += 1
+
 
     @property
     def products(self):
-        return self.__products
+        list_products = ""
+        for prod in self.__products:
+            list_products +=f'Название {prod.name}, описание {prod.description}, цена {prod.price}, количество {prod.quantity}'
+            return list_products
+        # return self.__products
 
 
 if __name__ == "__main__":
