@@ -1,5 +1,5 @@
-from category import Category
-from product import Product
+from src.category import Category
+from src.product import Product
 
 
 if __name__ == "__main__":
