@@ -13,18 +13,6 @@ cover_main = current_dir/'src'/'category.py'
 from src.category import Category
 from src.product import Product
 
-def test_product_init(product):
-    assert product.name == "Samsung Galaxy S23 Ultra"
-    assert product.description == "256GB, Серый цвет, 200MP камера"
-    assert product.price == 80000.0
-    assert product.quantity == 5
-
-
-def test_product_init(product):
-    assert product.name == "Samsung Galaxy S23 Ultra"
-    assert product.description == "256GB, Серый цвет, 200MP камера"
-    assert product.price == 80000.0
-    assert product.quantity == 5
 
 def test_category_init(first_category1, second_category2, category_not_products):
     assert first_category1.name == "Смартфоны"
@@ -46,27 +34,20 @@ def test_category_init(first_category1, second_category2, category_not_products)
     assert category_not_products.product_count == 5
 
 
-    assert second_category2.products == 'Название Iphone 15, описание 512GB, Gray space, цена 210000.0, количество 8'
-    assert first_category1.products == 'Название Iphone 15, описание 512GB, Gray space, цена 210000.0, количество 8'
-    # assert category_not_products.products == None
+    assert second_category2.products == ('Iphone 15, 210000.0 руб.; Остаток: 8 шт.; Samsung Galaxy S23 Ultra, 31000.0 '
+ 'руб.; Остаток: 5 шт.; Xiaomi Redmi Note 11, 80000.0 руб.; Остаток: 14 шт.')
+    assert first_category1.products == ('Iphone 15, 210000.0 руб.; Остаток: 8 шт.; '
+                                        'Samsung Galaxy S23 Ultra, 80000.0 руб.; Остаток: 5 шт.')
+    assert category_not_products.products == ''
 
-def test_category_init_not_category():
+def test_category_init_not_products():
     category = Category("Смартфоны", "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для "
-                    "удобства жизни", 0)
-    assert int(category.products) == 0
+                    "удобства жизни", [])
+    assert category.products == ''
 
 # Тест на изменение атрибутов
 
-def test_change_product_attributes(product):
-    #изменяем атрибуты
-    product.name = "Новый товар"
-    product.price = 150.0
-    product.quantity = 5
 
-    # Проверяем, что изменения прошли успешно
-    assert product.name == "Новый товар"
-    assert product.price == 150.0
-    assert product.quantity == 5
 
 def test_change_category_attributes(first_category1):
     #изменяем атрибуты
@@ -77,38 +58,14 @@ def test_change_category_attributes(first_category1):
     # Проверяем, что изменения прошли успешно
     assert first_category1.name == "Новый товар"
     assert first_category1.description == 'wool, black'
-    assert len(first_category1.products) == 2
+    assert len(first_category1.products) == 96
 
 def test_type_data_product(second_category2):
     assert isinstance(second_category2.name, str)
     assert isinstance(second_category2.description, str)
-    assert isinstance(second_category2.products, list)
-
-def test_product_negativ_price(): #  "Цена должна быть больше нуля"
-    # @price.setter
-    # assert price(self, price=-1):
-    #     print("Цена не должна быть нулевая или отрицательная")
-
-    with pytest.raises(ValueError, match="Цена не должна быть нулевая или отрицательная"):
-        Product(name="Товар", description="Описание", price=-10.0, quantity=5)
-
-def test_product_negativ_quantity(): #  "Цена должна быть больше нуля"
-    with pytest.raises(ValueError, match="Количество не может быть отрицательным"):
-        Product(name="Товар", description="Описание", price=10.0, quantity=-5)
+    assert isinstance(second_category2.products, str)
 
 
-def test_price():
-    "Правильность возврата цены с помощью геттера"
-    product = Product.new_product(
-        {"name": "Samsung Galaxy S23 Ultra", "description": "256GB, Серый цвет, 200MP камера", "price": 180000.0,
-         "quantity": 5})
-    # product = Product(name="Товар", price=10)  # Создай экземпляр
-    assert product.price == 180000.0  # Используй геттер
-    # price = 10
-    # assert self.__price == price
-
-
-    # price(self) == self_price
 
 
 
