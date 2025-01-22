@@ -5,13 +5,15 @@ class Category:  # Класс для создания категорий с об
     category_count = 0
     product_count = 0
 
+
+
     def __init__(self, name, description, products=[]):  # Инициализация класса
         self.name = name
         self.description = description
         self.__products = products if products is not None else []
         Category.category_count += 1
         Category.product_count += len(products) if products else 0
-        self._product_count = 0
+        # self._product_count = 0
 
 
         # Метод в который нужно передавать объект класса Product
@@ -20,7 +22,8 @@ class Category:  # Класс для создания категорий с об
         #     self.__products.append([])
         # else:
         self.__products.append(product)
-        self._product_count += 1
+    product_count += 1
+
 
 
     # @property
