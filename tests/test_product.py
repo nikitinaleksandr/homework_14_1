@@ -81,3 +81,10 @@ def test_price():
     # price(self) == self_price
 def test_price_getter(product):
     assert product.price == 80000.0  # Проверяем, что геттер возвращает правильную цену
+
+
+def test_add(product_a, product_b):
+    """Проверка правильности работы функции при корректных входных данных"""
+    result = product_a + product_b
+    assert result == 300
+

@@ -17,6 +17,14 @@ class Product:  # Класс для создания продуктов с об�
         else:
             raise ValueError("Количество не может быть отрицательным")
 
+    def __add__(self, other):
+        'Функция возвращающая произведение цены на количество у двух объектов'
+        new_numerator = (self.price * self.quantity) + (other.price * other.quantity)
+
+        return new_numerator
+
+
+
     @property
     def price(self):
         return self.__price
@@ -35,3 +43,7 @@ class Product:  # Класс для создания продуктов с об�
         description = dict_product['description']
         quantity = dict_product['quantity']
         return cls(name, description, price, quantity)
+
+    def __str__(self):
+        """Строковое значение класса Product 'Название продукта, 80 руб. Остаток: 15 шт.'"""
+        return f"{self.name}, {self.price} руб., Остаток: {self.quantity} шт."

@@ -1,3 +1,6 @@
+from itertools import product
+
+
 class Category:  # Класс для создания категорий с общими свойствами
     name: str  # Название
     description: str  # Описание
@@ -26,6 +29,8 @@ class Category:  # Класс для создания категорий с об
 
 
 
+
+
     # @property
     # def products(self):
     #     list_products = ""
@@ -34,6 +39,15 @@ class Category:  # Класс для создания категорий с об
     #         return list_products
     #     # return self.__products
 
+    def __str__(self):
+        sum_quantity = 0
+        for prod in self.__products:
+            sum_quantity += int(prod.quantity)
+
+        return f"{self.name}, количество продуктов: {sum_quantity} шт."
+
+
     @property
     def products(self):
-        return "; ".join([f"{product.name}, {product.price} руб.; Остаток: {product.quantity} шт." for product in self.__products])
+        return "; ".join(str(product) for product in self.__products)
+

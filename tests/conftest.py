@@ -48,3 +48,14 @@ def product():
 # def product():
 #     return Product(name="Товар", price=100, quantity=10)
 
+@pytest.fixture
+def product_a():
+    return Product(name="Product A", description="Description A", price=10, quantity=10)
+
+@pytest.fixture
+def product_b():
+    return Product(name="Product b", description="Description b", price=20, quantity=10)
+
+@pytest.fixture
+def category_4():
+    return Category(name="Product b", quantity=10)

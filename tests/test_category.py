@@ -29,15 +29,13 @@ def test_category_init(first_category1, second_category2, category_not_products)
     assert second_category2.category_count == 3
     assert category_not_products.category_count == 3
 
-    assert first_category1.product_count == 5
-    assert second_category2.product_count == 5
-    assert category_not_products.product_count == 5
+    assert first_category1.product_count == 6
+    assert second_category2.product_count == 6
+    assert category_not_products.product_count == 6
 
 
-    assert second_category2.products == ('Iphone 15, 210000.0 руб.; Остаток: 8 шт.; Samsung Galaxy S23 Ultra, 31000.0 '
- 'руб.; Остаток: 5 шт.; Xiaomi Redmi Note 11, 80000.0 руб.; Остаток: 14 шт.')
-    assert first_category1.products == ('Iphone 15, 210000.0 руб.; Остаток: 8 шт.; '
-                                        'Samsung Galaxy S23 Ultra, 80000.0 руб.; Остаток: 5 шт.')
+    assert second_category2.products == 'Iphone 15, 210000.0 руб., Остаток: 8 шт.; Samsung Galaxy S23 Ultra, 31000.0 руб., Остаток: 5 шт.; Xiaomi Redmi Note 11, 80000.0 руб., Остаток: 14 шт.'
+    assert first_category1.products == 'Iphone 15, 210000.0 руб., Остаток: 8 шт.; Samsung Galaxy S23 Ultra, 80000.0 руб., Остаток: 5 шт.'
     assert category_not_products.products == ''
 
 def test_category_init_not_products():
@@ -64,6 +62,16 @@ def test_type_data_product(second_category2):
     assert isinstance(second_category2.name, str)
     assert isinstance(second_category2.description, str)
     assert isinstance(second_category2.products, str)
+
+def test_str(first_category1):
+    assert str(first_category1) == 'Смартфоны, количество продуктов: 13 шт.'
+
+
+
+# протестировать метод `__str__`, создай объект класса, добавь в него несколько продуктов и проверь, что строковое
+# представление соответствует ожидаемому. Используй `assert` для сравнения результата `str(твой_объект)` с ожидаемой
+# строкой. Это поможет убедиться, что метод работает корректно.
+
 
 
 
