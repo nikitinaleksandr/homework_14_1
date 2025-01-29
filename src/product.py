@@ -61,7 +61,7 @@ class Smartphone(Product): # добавляес к классу Product новы
         self.color = color
 
     def __add__(self, other):
-        if isinstance(other, Smartphone):
+        if type(other) is Smartphone:
             return self.quantity + other.quantity
         elif isinstance(other, int):
             return self.quantity + other
@@ -77,7 +77,7 @@ class LawnGrass(Product): # добавляес к классу Product новы�
         self.color = color
 
     def __add__(self, other):
-        if isinstance(other, LawnGrass):
+        if type(other) is LawnGrass:
             return self.quantity + other.quantity
         elif isinstance(other, int):
             return self.quantity + other
