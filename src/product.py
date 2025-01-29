@@ -1,3 +1,6 @@
+from logging import raiseExceptions
+
+
 class Product:  # Класс для создания продуктов с общими свойствами
     name: str  # Название
     description: str  # Описание
@@ -57,6 +60,15 @@ class Smartphone(Product): # добавляес к классу Product новы
         self.memory = memory
         self.color = color
 
+    def __add__(self, other):
+        if isinstance(other, Smartphone):
+            return self.quantity + other.quantity
+        elif isinstance(other, int):
+            return self.quantity + other
+        else:
+            raise TypeError
+
+
 class LawnGrass(Product): # добавляес к классу Product новые свойства efficiency, model, memory, color
     def __init__(self, name, description, price, quantity, country, germination_period, color):
         super().__init__(name, description, price, quantity)
@@ -64,3 +76,10 @@ class LawnGrass(Product): # добавляес к классу Product новы�
         self.germination_period = germination_period
         self.color = color
 
+    def __add__(self, other):
+        if isinstance(other, LawnGrass):
+            return self.quantity + other.quantity
+        elif isinstance(other, int):
+            return self.quantity + other
+        else:
+            raise TypeError
