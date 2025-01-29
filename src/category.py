@@ -1,4 +1,5 @@
 from itertools import product
+from src.product import Product
 
 
 class Category:  # Класс для создания категорий с общими свойствами
@@ -21,11 +22,13 @@ class Category:  # Класс для создания категорий с об
 
         # Метод в который нужно передавать объект класса Product
     def add_product(self, product):
-        # if self.__products == []:
-        #     self.__products.append([])
-        # else:
-        self.__products.append(product)
+        if not isinstance(product, Product):
+            raise TypeError
+        else:
+            self.__products.append(product)
     product_count += 1
+
+
 
 
 
