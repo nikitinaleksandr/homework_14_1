@@ -1,6 +1,10 @@
 import pytest
 from src.category import Category
 from src.product import Product
+from src.LawnGrass import LawnGrass
+from src.smartphone import Smartphone
+
+
 
 @pytest.fixture
 def first_category1():
@@ -59,3 +63,10 @@ def product_b():
 @pytest.fixture
 def category_4():
     return Category(name="Product b", quantity=10)
+
+
+@pytest.fixture
+def category_smartphones():
+    return  Smartphone("Смартфоны", "Высокотехнологичные смартфоны", 10000, 7, 2000, 'S800',256, 'green')
+#     category_grass = Category("Газонная трава", "Различные виды газонной травы", [grass1, grass2])
+

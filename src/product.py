@@ -50,36 +50,3 @@ class Product:  # Класс для создания продуктов с об�
     def __str__(self):
         """Строковое значение класса Product 'Название продукта, 80 руб. Остаток: 15 шт.'"""
         return f"{self.name}, {self.price} руб., Остаток: {self.quantity} шт."
-
-
-class Smartphone(Product): # добавляес к классу Product новые свойства efficiency, model, memory, color
-    def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
-        super().__init__(name, description, price, quantity)
-        self.efficiency = efficiency
-        self.model = model
-        self.memory = memory
-        self.color = color
-
-    def __add__(self, other):
-        if type(other) is Smartphone:
-            return self.quantity + other.quantity
-        elif isinstance(other, int):
-            return self.quantity + other
-        else:
-            raise TypeError
-
-
-class LawnGrass(Product): # добавляес к классу Product новые свойства efficiency, model, memory, color
-    def __init__(self, name, description, price, quantity, country, germination_period, color):
-        super().__init__(name, description, price, quantity)
-        self.country = country
-        self.germination_period = germination_period
-        self.color = color
-
-    def __add__(self, other):
-        if type(other) is LawnGrass:
-            return self.quantity + other.quantity
-        elif isinstance(other, int):
-            return self.quantity + other
-        else:
-            raise TypeError

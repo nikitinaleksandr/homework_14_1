@@ -1,5 +1,7 @@
 from src.category import Category
-from src.product import Product, Smartphone, LawnGrass
+# from src.product import Product, Smartphone, LawnGrass
+from src.smartphone import Smartphone
+from src.LawnGrass import LawnGrass
 
 
 # if __name__ == '__main__':
