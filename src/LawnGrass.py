@@ -10,7 +10,8 @@ class LawnGrass(Product): # добавляет к классу Product новы�
     def __add__(self, other):
         if type(other) is LawnGrass:
             return self.quantity + other.quantity
-        elif isinstance(other, int):
-            return self.quantity + other
+        # elif isinstance(other, int):
+        #     return self.quantity + other
         else:
             raise TypeError
+

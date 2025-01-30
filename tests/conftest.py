@@ -70,3 +70,15 @@ def category_smartphones():
     return  Smartphone("Смартфоны", "Высокотехнологичные смартфоны", 10000, 7, 2000, 'S800',256, 'green')
 #     category_grass = Category("Газонная трава", "Различные виды газонной травы", [grass1, grass2])
 
+@pytest.fixture
+def category_smartphones_2():
+    return  Smartphone("Смартфоны", "Высокотехнологичные смартфоны", 12000, 9, 4000, 'E800',512, 'red')
+
+@pytest.fixture
+def LawnGrass_1():
+    return LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
+
+
+@pytest.fixture
+def LawnGrass_2():
+    return LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")

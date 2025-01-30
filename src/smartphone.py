@@ -12,7 +12,9 @@ class Smartphone(Product): # добавляет к классу Product новы
     def __add__(self, other):
         if type(other) is Smartphone:
             return self.quantity + other.quantity
-        elif isinstance(other, int):
-            return self.quantity + other
+        # if type(other) is not type(self):
+        #     return self.quantity + other.quantity
+        # elif isinstance(other, int):
+        #     return self.quantity + other
         else:
             raise TypeError
