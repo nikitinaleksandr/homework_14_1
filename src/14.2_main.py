@@ -53,25 +53,26 @@ class Category:  # Класс для создания категорий с об
         # self.__products = []
         self._product_count = 0
 
-
         # Метод в который нужно передавать объект класса Product
     def add_product(self, product):
         self.__products.append(product)
         self._product_count += 1
 
-
     @property
     def products(self):
         list_products = ""
         for prod in self.__products:
-            list_products +=f'Название {prod.name}, описание {prod.description}, цена {prod.price}, количество {prod.quantity}'
+            list_products += (f'Название {prod.name}, '
+                              f'описание {prod.description}, '
+                              f'цена {prod.price}, '
+                              f'количество {prod.quantity}')
             return list_products
         # return self.__products
 
 
 if __name__ == "__main__":
-    product1 = Product("Samsung Galaxy S23 Ultra", "256GB,"
-                        " Серый цвет, 200MP камера", 180000.0, 5)
+    product1 = Product("Samsung Galaxy S23 Ultra",
+                       "256GB, Серый цвет, 200MP камера", 180000.0, 5)
     product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
     product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
 

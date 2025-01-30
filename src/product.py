@@ -1,6 +1,3 @@
-from logging import raiseExceptions
-
-
 class Product:  # Класс для создания продуктов с общими свойствами
     name: str  # Название
     description: str  # Описание
@@ -22,11 +19,10 @@ class Product:  # Класс для создания продуктов с об�
 
     def __add__(self, other):
         'Функция возвращающая произведение цены на количество у двух объектов'
-        new_numerator = (self.price * self.quantity) + (other.price * other.quantity)
+        new_numerator = ((self.price * self.quantity) +
+                         (other.price * other.quantity))
 
         return new_numerator
-
-
 
     @property
     def price(self):
@@ -48,5 +44,8 @@ class Product:  # Класс для создания продуктов с об�
         return cls(name, description, price, quantity)
 
     def __str__(self):
-        """Строковое значение класса Product 'Название продукта, 80 руб. Остаток: 15 шт.'"""
+        """
+        Строковое значение класса Product
+        'Название продукта, 80 руб. Остаток: 15 шт.'
+        """
         return f"{self.name}, {self.price} руб., Остаток: {self.quantity} шт."

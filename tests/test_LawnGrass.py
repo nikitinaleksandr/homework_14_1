@@ -10,9 +10,9 @@ def test_LawnGrass(LawnGrass_1):
     assert LawnGrass_1.color == "Зеленый"
 
 
-
 def test_LawnGrass_add(LawnGrass_1, LawnGrass_2):
     assert LawnGrass_1 + LawnGrass_2 == 35
+
 
 def test_LawnGrass_add_error(LawnGrass_1, LawnGrass_2):
 
