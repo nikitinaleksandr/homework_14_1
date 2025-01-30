@@ -14,6 +14,11 @@
     name: str  # Название
     description: str  # Описание
     products: list  # Список товаров категории
+Наследники класса Product:
+- class Smartphone: # расширен атрибутами: производительность (efficiency), модель (model), 
+                                           объем встроенной памяти (memory), цвет (color).
+- class LawnGrass:# расширен атрибутами: страна-производитель (country), 
+                                         срок прорастания (germination_period), цвет (color).
 
 ### Установка и использование
 С помощью git clone клонируем репозиторий на свой компьютер
