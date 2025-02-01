@@ -1,12 +1,19 @@
-class Product:  # Класс для создания продуктов с общими свойствами
+from src.BaseProduct import BaseProduct
+from src.print_mixin import ProductMixin
+
+
+class Product(BaseProduct, ProductMixin):  # Класс для создания продуктов с общими свойствами
     name: str  # Название
     description: str  # Описание
     price: float  # Цена
     quantity: int  # Количество
 
     def __init__(self, name, description, price, quantity):
+
+
         self.name = name
         self.description = description
+
 
         if float(price) > 0:
             self.__price = price
@@ -16,6 +23,10 @@ class Product:  # Класс для создания продуктов с об�
             self.quantity = quantity
         else:
             raise ValueError("Количество не может быть отрицательным")
+
+        super().__init__()
+
+
 
     def __add__(self, other):
         'Функция возвращающая произведение цены на количество у двух объектов'
