@@ -31,6 +31,13 @@ class Category:  # Класс для создания категорий с об
 
         return f"{self.name}, количество продуктов: {sum_quantity} шт."
 
+    def middle_price(self):
+        try:
+            return sum([product.price for product in self.__products])/len(self.__products)
+        except ZeroDivisionError:
+            return 0
+
+
     @property
     def products(self):
         return "; ".join(str(product) for product in self.__products)

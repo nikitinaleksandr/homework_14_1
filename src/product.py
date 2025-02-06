@@ -20,7 +20,7 @@ class Product(BaseProduct, ProductMixin):
         if quantity >= 0:
             self.quantity = quantity
         else:
-            raise ValueError("Количество не может быть отрицательным")
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
 
         super().__init__()
 
