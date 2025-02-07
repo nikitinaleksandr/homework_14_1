@@ -17,11 +17,10 @@ class Product(BaseProduct, ProductMixin):
             self.__price = price
         else:
             raise ValueError("Цена не должна быть нулевая или отрицательная")
-        if quantity >= 0:
-            self.quantity = quantity
-        else:
+        if quantity <= 0:
             raise ValueError("Товар с нулевым количеством не может быть добавлен")
-
+        else:
+            self.quantity = quantity
         super().__init__()
 
     def __add__(self, other):
