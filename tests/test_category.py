@@ -4,6 +4,8 @@ import pytest
 from mypy.types import names
 from unicodedata import category
 
+from tests.conftest import product
+
 # from tests.conftest import product
 
 current_dir = Path(__file__).parent.parent.resolve()
@@ -66,14 +68,15 @@ def test_type_data_product(second_category2):
 def test_str(first_category1):
     assert str(first_category1) == 'Смартфоны, количество продуктов: 13 шт.'
 
+def test_middle_price(first_category1, category_not_products):
+    assert first_category1.middle_price() == 145000.0
+    assert category_not_products.middle_price() == 0
 
 
-# протестировать метод `__str__`, создай объект класса, добавь в него несколько продуктов и проверь, что строковое
-# представление соответствует ожидаемому. Используй `assert` для сравнения результата `str(твой_объект)` с ожидаемой
-# строкой. Это поможет убедиться, что метод работает корректно.
+def test_add_product(first_category1):
+    assert first_category1.product_count == 3
 
 
-
-
-
-
+def test_add_non_product_raises_type_error(first_category1, non_product_object):
+    with pytest.raises(TypeError, match="Объект должен быть экземпляром класса Product"):
+        first_category1.add_product(non_product_object)

@@ -82,3 +82,7 @@ def LawnGrass_1():
 @pytest.fixture
 def LawnGrass_2():
     return LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
+
+@pytest.fixture
+def non_product_object():
+    return "This is not a Product"

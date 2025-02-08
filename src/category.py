@@ -19,7 +19,7 @@ class Category:  # Класс для создания категорий с об
         # Метод в который нужно передавать объект класса Product
     def add_product(self, product):
         if not isinstance(product, Product):
-            raise TypeError
+            raise TypeError("Объект должен быть экземпляром класса Product")
         else:
             self.__products.append(product)
     product_count += 1
@@ -33,10 +33,10 @@ class Category:  # Класс для создания категорий с об
 
     def middle_price(self):
         try:
-            return sum([product.price for product in self.__products])/len(self.__products)
+            return sum([product.price for product
+                        in self.__products])/len(self.__products)
         except ZeroDivisionError:
             return 0
-
 
     @property
     def products(self):

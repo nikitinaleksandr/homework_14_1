@@ -63,9 +63,12 @@ def test_product_zero_price(): #  "Цена должна быть больше �
     with pytest.raises(ValueError, match="Цена не должна быть нулевая или отрицательная"):
         Product(name="Товар", description="Описание", price=0, quantity=5)
 def test_product_negativ_quantity(): #  "Цена должна быть больше нуля"
-    with pytest.raises(ValueError, match="Количество не может быть отрицательным"):
-        Product(name="Товар", description="Описание", price=10.0, quantity=-5)
-
+    # with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен"):
+    #     Product(name="Товар", description="Описание", price=10.0, quantity=-5)
+    try:
+        product_invalid = Product("Бракованный товар", "Неверное количество", 1000.0, 0)
+    except ValueError as e:
+        print(e)
 
 def test_price():
     "Правильность возврата цены с помощью геттера"

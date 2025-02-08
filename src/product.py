@@ -17,11 +17,18 @@ class Product(BaseProduct, ProductMixin):
             self.__price = price
         else:
             raise ValueError("Цена не должна быть нулевая или отрицательная")
+        try:
+            if quantity <= 0:
+                raise ValueError("Товар с нулевым количеством не может "
+                                 "быть добавлен")
+        except ValueError as e:
+            print(str(e))
         if quantity <= 0:
-            raise ValueError("Товар с нулевым количеством не может быть добавлен")
+            raise ValueError("Товар с нулевым количеством не может "
+                             "быть добавлен")
         else:
             self.quantity = quantity
-        super().__init__()
+            super().__init__()
 
     def __add__(self, other):
         'Функция возвращающая произведение цены на количество у двух объектов'
