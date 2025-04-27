@@ -1,5 +1,6 @@
 import pytest
-from src.main import Product, Category
+from src.category import Category
+from src.product import Product
 
 @pytest.fixture
 def first_category1():
@@ -42,4 +43,8 @@ def product():
         description="256GB, Серый цвет, 200MP камера",
         price=80000.0,
         quantity=5)
+
+# @pytest.fixture
+# def product():
+#     return Product(name="Товар", price=100, quantity=10)
 
